@@ -1,0 +1,399 @@
+/* =====================================================================
+   Nomenclatura Química Interactiva - Hoja de estilos propia
+   CSS escrito por el equipo, SIN frameworks (no usa Bootstrap).
+   Diseño adaptable (responsive) con Flexbox, CSS Grid y media queries.
+   Paleta verde relacionada con el área de Química.
+   ===================================================================== */
+
+/* ---------- 1. Variables de color y medidas ---------- */
+:root {
+    --verde: #1b6f5c;
+    --verde-oscuro: #155a4a;
+    --verde-claro: #e6f2ef;
+    --gris-fondo: #f4f6f5;
+    --gris-borde: #d5dbd9;
+    --gris-texto: #5f6b67;
+    --texto: #1f2a27;
+    --rojo: #c0392b;
+    --rojo-claro: #fbe9e7;
+    --amarillo-claro: #fff6dc;
+    --amarillo-borde: #e3b341;
+    --azul: #1f5fa8;
+    --azul-claro: #e7f0fa;
+    --blanco: #ffffff;
+    --radio: 8px;
+    --sombra: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- 2. Base ---------- */
+* { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--texto);
+    background-color: var(--gris-fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .75rem; }
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.25rem; }
+h3 { font-size: 1.1rem; }
+p  { margin: 0 0 .75rem; }
+a  { color: var(--verde); }
+sub { font-size: .75em; }
+
+.contenedor {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contenido { flex: 1; padding-top: 1.5rem; padding-bottom: 2rem; }
+
+/* ---------- 3. Barra de navegación ---------- */
+.barra {
+    background-color: var(--verde);
+    color: var(--blanco);
+    box-shadow: var(--sombra);
+}
+.barra .contenedor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    min-height: 60px;
+}
+.barra-marca {
+    color: var(--blanco);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding: .6rem 0;
+    white-space: nowrap;
+}
+.barra-boton {
+    display: none;                /* solo aparece en celular */
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .6);
+    color: var(--blanco);
+    border-radius: var(--radio);
+    font-size: 1.3rem;
+    padding: .2rem .7rem;
+    cursor: pointer;
+}
+.barra-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-basis: 100%;            /* en computadora el menú ocupa su propia fila */
+    padding-bottom: .5rem;
+}
+.barra-enlaces {
+    list-style: none;
+    display: flex;
+    gap: .25rem;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+.barra-enlaces a {
+    display: block;
+    color: rgba(255, 255, 255, .9);
+    text-decoration: none;
+    padding: .5rem .6rem;
+    border-radius: var(--radio);
+    white-space: nowrap;
+}
+.barra-enlaces a:hover,
+.barra-enlaces a.activo { background-color: rgba(255, 255, 255, .15); color: var(--blanco); }
+.barra-usuario {
+    font-size: .85rem;
+    color: rgba(255, 255, 255, .85);
+    white-space: nowrap;
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.barra-menu .boton-borde-claro { white-space: nowrap; }
+a.barra-usuario { text-decoration: none; }
+a.barra-usuario:hover { color: var(--blanco); text-decoration: underline; }
+
+/* ---------- 4. Botones ---------- */
+.boton {
+    display: inline-block;
+    font: inherit;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: var(--radio);
+    padding: .55rem 1.1rem;
+    background-color: var(--verde);
+    color: var(--blanco);
+    transition: background-color .15s, box-shadow .15s;
+}
+.boton:hover { background-color: var(--verde-oscuro); }
+.boton:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(27, 111, 92, .35); }
+.boton:disabled { opacity: .5; cursor: not-allowed; }
+
+.boton-gris     { background-color: #6c757d; }
+.boton-gris:hover { background-color: #565e64; }
+.boton-azul     { background-color: var(--azul); }
+.boton-azul:hover { background-color: #184c86; }
+.boton-rojo     { background-color: var(--rojo); }
+.boton-rojo:hover { background-color: #a13024; }
+.boton-borde {
+    background-color: transparent;
+    color: var(--verde);
+    border-color: var(--verde);
+}
+.boton-borde:hover { background-color: var(--verde-claro); }
+.boton-borde-claro {
+    background-color: transparent;
+    color: var(--blanco);
+    border-color: rgba(255, 255, 255, .7);
+    padding: .35rem .8rem;
+    font-size: .9rem;
+}
+.boton-borde-claro:hover { background-color: rgba(255, 255, 255, .15); }
+.boton-chico  { padding: .3rem .7rem; font-size: .85rem; }
+.boton-grande { padding: 1rem; font-size: 1.05rem; }
+.boton-bloque { display: block; width: 100%; }
+
+.grupo-botones { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.en-linea { display: inline; }
+
+/* ---------- 5. Tarjetas ---------- */
+.tarjeta {
+    background-color: var(--blanco);
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 1.25rem;
+}
+.tarjeta-verde {
+    background-color: var(--verde-claro);
+    border-color: var(--verde);
+}
+a.tarjeta { display: block; text-decoration: none; color: inherit; }
+a.tarjeta:hover { box-shadow: 0 0 0 3px rgba(27, 111, 92, .25); }
+
+.tarjeta-formulario { max-width: 440px; margin: 1rem auto; }
+.tarjeta-formulario-ancha { max-width: 620px; margin: 1rem auto; }
+
+.cifra { font-size: 2.4rem; font-weight: 700; color: var(--verde); margin: 0; }
+
+/* ---------- 6. Rejillas (CSS Grid) ---------- */
+.rejilla {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+.rejilla-2 { grid-template-columns: repeat(2, 1fr); }
+.rejilla-4 { grid-template-columns: repeat(4, 1fr); }
+.ocupa-todo { grid-column: 1 / -1; }
+
+/* ---------- 7. Formularios ---------- */
+.campo { margin-bottom: 1rem; }
+.etiqueta { display: block; font-weight: 600; margin-bottom: .3rem; font-size: .95rem; }
+.entrada {
+    display: block;
+    width: 100%;
+    font: inherit;
+    padding: .55rem .75rem;
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radio);
+    background-color: var(--blanco);
+    color: var(--texto);
+}
+.entrada:focus { outline: none; border-color: var(--verde); box-shadow: 0 0 0 3px rgba(27, 111, 92, .2); }
+textarea.entrada { resize: vertical; min-height: 70px; }
+
+.mensaje-error { display: none; color: var(--rojo); font-size: .85rem; margin-top: .25rem; }
+
+/* La clase "validado" la agrega validaciones.js al intentar enviar el formulario */
+form.validado .entrada:invalid { border-color: var(--rojo); }
+form.validado .entrada:invalid ~ .mensaje-error { display: block; }
+form.validado .entrada:valid { border-color: var(--verde); }
+
+.casilla { display: flex; align-items: center; gap: .5rem; }
+.casilla input { width: 18px; height: 18px; }
+
+/* Barra de filtros (búsqueda + selección + botón) */
+.filtros {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr auto;
+    gap: .5rem;
+    align-items: end;
+    margin-bottom: 1rem;
+}
+.filtros-4 { grid-template-columns: 2fr 1fr 1fr auto; }
+
+/* ---------- 8. Mensajes (avisos) ---------- */
+.aviso {
+    position: relative;
+    border: 1px solid;
+    border-radius: var(--radio);
+    padding: .7rem 2.5rem .7rem 1rem;
+    margin-bottom: 1rem;
+}
+.aviso-exito       { background-color: var(--verde-claro); border-color: var(--verde); color: var(--verde-oscuro); }
+.aviso-error       { background-color: var(--rojo-claro); border-color: var(--rojo); color: #8a2a1f; }
+.aviso-advertencia { background-color: var(--amarillo-claro); border-color: var(--amarillo-borde); color: #6b4e00; }
+.aviso-info        { background-color: var(--azul-claro); border-color: var(--azul); color: #173f6d; }
+.aviso-cerrar {
+    position: absolute;
+    top: .35rem;
+    right: .6rem;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* ---------- 9. Tablas ---------- */
+.tabla-contenedor { width: 100%; overflow-x: auto; }   /* desplazamiento horizontal en celular */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--blanco);
+    border-radius: var(--radio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+.tabla th, .tabla td { padding: .65rem .75rem; text-align: left; border-bottom: 1px solid var(--gris-borde); vertical-align: middle; }
+.tabla th { background-color: var(--verde); color: var(--blanco); font-weight: 600; white-space: nowrap; }
+.tabla tbody tr:nth-child(even) { background-color: #f7faf9; }
+.tabla tbody tr:hover { background-color: var(--verde-claro); }
+
+/* ---------- 10. Insignias ---------- */
+.insignia {
+    display: inline-block;
+    font-size: .78rem;
+    font-weight: 600;
+    padding: .2rem .55rem;
+    border-radius: 999px;
+    background-color: var(--verde);
+    color: var(--blanco);
+}
+.insignia-gris { background-color: #8a9490; }
+
+/* ---------- 11. Datos (resultado de Formular y Nombrar) ---------- */
+.datos {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: .4rem 1rem;
+    margin: 0;
+}
+.datos dt { font-weight: 600; }
+.datos dd { margin: 0; }
+
+.formula { font-size: 1.3rem; font-weight: 700; color: var(--verde); }
+
+/* ---------- 12. Evaluación ---------- */
+.progreso { height: 8px; background-color: var(--gris-borde); border-radius: 999px; overflow: hidden; margin-bottom: 1.5rem; }
+.progreso-barra { height: 100%; width: 0; background-color: var(--verde); transition: width .25s; }
+
+.opcion {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    padding: .65rem .8rem;
+    border: 1px solid var(--gris-borde);
+    border-radius: var(--radio);
+    margin-bottom: .5rem;
+    cursor: pointer;
+    background-color: var(--blanco);
+}
+.opcion:hover { border-color: var(--verde); }
+.opcion input { width: 18px; height: 18px; accent-color: var(--verde); }
+
+.revision { border: 1px solid; border-radius: var(--radio); padding: .6rem .8rem; margin-bottom: .5rem; }
+.revision-bien { background-color: var(--verde-claro); border-color: var(--verde); }
+.revision-mal  { background-color: var(--rojo-claro); border-color: var(--rojo); }
+
+/* ---------- 13. Aprende Química ---------- */
+.migas { font-size: .9rem; margin-bottom: 1rem; color: var(--gris-texto); }
+.migas a { text-decoration: none; }
+.tema section { background-color: var(--blanco); border-left: 4px solid var(--verde); border-radius: var(--radio); padding: 1rem 1.25rem; margin-bottom: 1rem; box-shadow: var(--sombra); }
+.tema h2 { color: var(--verde); }
+.tema ul, .tema ol { margin: 0 0 .75rem; padding-left: 1.3rem; }
+.tema li { margin-bottom: .3rem; }
+.ecuacion {
+    font-family: Consolas, "Courier New", monospace;
+    background-color: var(--verde-claro);
+    border-radius: var(--radio);
+    padding: .5rem .8rem;
+    margin: .5rem 0;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.nota { background-color: var(--amarillo-claro); border-left: 4px solid var(--amarillo-borde); padding: .6rem .8rem; border-radius: var(--radio); margin: .5rem 0; }
+.tabla-tema th, .tabla-tema td { font-size: .92rem; }
+
+/* ---------- 14. Utilidades ---------- */
+.texto-verde  { color: var(--verde); }
+.texto-gris   { color: var(--gris-texto); }
+.texto-centro { text-align: center; }
+.texto-derecha { text-align: right; }
+.texto-chico  { font-size: .88rem; }
+.negrita      { font-weight: 700; }
+.sin-salto    { white-space: nowrap; }
+.oculto       { display: none !important; }
+.separado     { margin-bottom: 1.5rem; }
+.encabezado   { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.encabezado h1 { margin: 0; }
+
+.pie {
+    text-align: center;
+    font-size: .85rem;
+    color: var(--gris-texto);
+    border-top: 1px solid var(--gris-borde);
+    padding: 1rem;
+    background-color: var(--blanco);
+}
+
+/* ---------- 15. Diseño adaptable (media queries) ---------- */
+
+/* Tabletas y pantallas medianas: hasta 1150 px (el menú se contrae en el botón ☰) */
+@media (max-width: 1150px) {
+    .rejilla, .rejilla-4 { grid-template-columns: repeat(2, 1fr); }
+
+    .barra-boton { display: block; }
+    .barra-menu {
+        display: none;            /* el menú se oculta y se muestra con el botón ☰ */
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        margin: 0 0 .75rem;
+        gap: .5rem;
+    }
+    .barra-menu.abierto { display: flex; }
+    .barra-enlaces { flex-direction: column; }
+    .barra-menu { padding-bottom: 0; }
+    .barra-usuario { max-width: none; }
+}
+
+/* Celulares: hasta 600 px */
+@media (max-width: 600px) {
+    h1 { font-size: 1.35rem; }
+    .barra-marca { font-size: .95rem; }
+    .rejilla, .rejilla-2, .rejilla-4 { grid-template-columns: 1fr; }
+    .filtros, .filtros-4 { grid-template-columns: 1fr; }
+    .datos { grid-template-columns: 1fr; }
+    .datos dd { margin-bottom: .5rem; }
+    .boton { padding: .7rem 1rem; }        /* tamaño táctil cómodo */
+    .tarjeta { padding: 1rem; }
+    .cifra { font-size: 2rem; }
+}

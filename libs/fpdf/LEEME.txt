@@ -1,0 +1,11 @@
+LIBRERÍA FPDF 1.9 (reportes en PDF)
+===================================
+Esta carpeta contiene la librería FPDF (http://www.fpdf.org), ya incluida en el proyecto.
+La usa ResultadoController::pdf() para generar el reporte de resultados en PDF.
+
+  libs/fpdf/fpdf.php      -> clase FPDF
+  libs/fpdf/font/         -> fuentes estándar (Helvetica/Arial, Times, Courier)
+  libs/fpdf/license.txt   -> licencia de uso libre de FPDF
+
+FPDF es una LIBRERÍA de PHP (un solo archivo de clases), no un framework.
+No se necesita Composer ni internet: funciona directamente con XAMPP.
